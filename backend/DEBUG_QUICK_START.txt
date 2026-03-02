@@ -1,0 +1,218 @@
+================================================================================
+GEMINI CLIENT DEBUG SCRIPTS - QUICK START GUIDE
+================================================================================
+
+LOCATION: /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/
+
+AVAILABLE SCRIPTS:
+1. test_gemini_debug.py          - Basic test (10 seconds)
+2. test_gemini_debug_extended.py - Full test suite (23 seconds)
+
+================================================================================
+HOW TO RUN
+================================================================================
+
+QUICK START (30 seconds):
+  cd backend
+  source venv/bin/activate
+  python test_gemini_debug.py
+
+FULL TEST SUITE (1 minute):
+  cd backend
+  source venv/bin/activate
+  python test_gemini_debug_extended.py
+
+================================================================================
+WHAT GETS TESTED
+================================================================================
+
+Basic Script (test_gemini_debug.py):
+  ✓ GeminiClient initialization
+  ✓ chat_complete() - non-streaming API call
+  ✓ chat_stream() - streaming API call
+
+Extended Script (test_gemini_debug_extended.py):
+  ✓ Simple chat (basic query)
+  ✓ System prompt injection (Jarvis role)
+  ✓ Streaming response handling
+  ✓ Multi-turn conversation context
+  ✓ Performance timing for each test
+  ✓ Test summary (PASS/FAIL count)
+
+================================================================================
+OUTPUT FILES GENERATED
+================================================================================
+
+After running test_gemini_debug.py:
+  → backend/gemini_debug.log (3.8 KB)
+
+After running test_gemini_debug_extended.py:
+  → backend/gemini_debug_extended.log (varies)
+
+Both contain:
+  - DEBUG level logging from all components
+  - HTTP request/response details
+  - Payload information (truncated for readability)
+  - Error details if any failures occur
+  - Performance timing information
+
+================================================================================
+EXPECTED RESULTS
+================================================================================
+
+If everything works correctly, you should see:
+
+  - All imports successful
+  - Configuration loaded from settings
+  - HTTP 200 responses from gateway
+  - API responses contain expected content
+  - No exceptions or errors
+  - Response times: 4-7 seconds per request
+
+All 4 tests in extended script should show: PASS
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+After running the scripts, verify:
+
+□ Scripts executed without exceptions
+□ Configuration printed correctly:
+  - Base URL: http://api-hub.inner.chj.cloud/llm-gateway/v1
+  - Model: gemini-3-pro-preview
+  - Token configured (masked in logs)
+
+□ API Requests:
+  - HTTP 200 status codes
+  - Successful payload sent
+  - Valid responses received
+
+□ Log Files:
+  - gemini_debug.log or gemini_debug_extended.log created
+  - Contains DEBUG level information
+  - No critical errors logged
+
+□ Test Results:
+  - All test cases marked PASS
+  - Response times reasonable (4-7 seconds)
+  - Full responses received and logged
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If tests fail, check:
+
+1. Network Connection:
+   - Can you reach api-hub.inner.chj.cloud?
+   - Is there a firewall blocking port 80?
+   - Check your network connectivity
+
+2. Configuration:
+   - Is app/core/config.py correct?
+   - GEMINI_BASE_URL should be: http://api-hub.inner.chj.cloud/llm-gateway/v1
+   - GEMINI_MODEL should be: gemini-3-pro-preview
+   - GEMINI_GW_TOKEN should be set
+
+3. Virtual Environment:
+   - Did you activate venv? (source venv/bin/activate)
+   - Are all dependencies installed? (pip install -r requirements.txt)
+
+4. Gateway Issues:
+   - Is the LLM gateway running and accessible?
+   - Check gateway logs for errors
+   - Verify token hasn't expired
+
+5. Debug Logs:
+   - Check gemini_debug.log for detailed error info
+   - Look for HTTP error codes or connection timeouts
+   - Review exception stack traces if present
+
+================================================================================
+CUSTOMIZING THE TESTS
+================================================================================
+
+To test a different query:
+
+1. Edit test_gemini_debug.py or test_gemini_debug_extended.py
+2. Find the Message creation line (search for "Message(")
+3. Change the content parameter to your custom query
+4. Save and run the script
+
+Example:
+  Before: content="Hello, can you say 'Hello' back to me?"
+  After:  content="Explain quantum computing in one sentence"
+
+================================================================================
+USING LOGS FOR DEBUGGING
+================================================================================
+
+The generated logs contain valuable information:
+
+- Timestamps: Exact when each operation occurred
+- HTTP Details: Connection info, request/response codes
+- Payloads: What was sent to the API (truncated)
+- Responses: What the API returned
+- Timing: How long each operation took
+- Errors: Any exceptions with full stack traces
+
+To analyze logs:
+  cat backend/gemini_debug.log | grep "ERROR"  (find errors)
+  cat backend/gemini_debug.log | grep "INFO"   (find key events)
+  tail -50 backend/gemini_debug.log             (see last entries)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+After verifying the GeminiClient works:
+
+1. Check reminder system logs:
+   → backend/reminder_debug.log
+
+2. Run the full application and monitor:
+   → python backend/run.py
+
+3. Check if reminders are being triggered:
+   → Look for reminder execution in logs
+   → Check if notifications appear
+
+4. If issues persist:
+   → Run extended test to verify all scenarios
+   → Check if system prompts work correctly
+   → Verify multi-turn conversations function
+
+================================================================================
+SCRIPT FILE LOCATIONS (Absolute Paths)
+================================================================================
+
+Scripts:
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/test_gemini_debug.py
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/test_gemini_debug_extended.py
+
+Log outputs:
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/gemini_debug.log
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/gemini_debug_extended.log
+
+Configuration:
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/app/core/config.py
+
+GeminiClient Implementation:
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/backend/app/core/llm/gemini_client.py
+
+================================================================================
+DOCUMENTATION
+================================================================================
+
+For more detailed information, see:
+  /Users/wanghuiyong/Desktop/CODE/code_25m12/jarvis-v5.3/GEMINI_DEBUG_SCRIPTS.md
+
+This file contains:
+- Complete feature descriptions
+- All test results and analysis
+- Configuration details
+- Troubleshooting guide
+- Integration information
+
+================================================================================

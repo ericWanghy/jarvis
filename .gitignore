@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+backend/venv/
+
+# Database
+*.db
+backend/storage/jarvis.db
+
+# Environment & Secrets
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build artifacts
+dist/
+dist-ssr/
+build/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tauri
+frontend/src-tauri/target/
+
+# Debug artifacts
+*.png
+!frontend/src-tauri/icons/*.png
+!frontend/public/*.svg
